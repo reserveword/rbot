@@ -102,7 +102,7 @@ expressions : exp EOF
 		if(t.constructor == Array) return arrayToString(t);
 		if(t.constructor == String) return '"'+t+'"';
 	}
-	console.log(taskToString($1[1])); return $1[1];	
+	parser.io.verbose(taskToString($1[1])); return $1[1];	
 }
 ;
 
