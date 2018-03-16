@@ -1,6 +1,6 @@
 # rbot
 
-[![NPM version](https://badge.fury.io/js/rbot.png)](http://badge.fury.io/js/rbot)
+[![Build Status](https://travis-ci.org/reserveword/rbot.svg?branch=master)](https://travis-ci.org/reserveword/rbot)
 
 A minecraft bot that can do many things. Control from in-game chat or/and console interface.
 
