@@ -2,11 +2,11 @@
 
 [![NPM version](https://badge.fury.io/js/rbot.png)](http://badge.fury.io/js/rbot)
 
-A minecraft bot that can do many things.
+A minecraft bot that can do many things. Control from in-game chat or/and console interface.
 
-Supports minecraft 1.11.2
+Supports minecraft:almost any version
 
-Youtube demos :
+Youtube demos of orginal app :
  * [repeat spiral down](http://www.youtube.com/watch?v=UM1ZV5200S0)
  * [watch,stop watch,replicate](http://www.youtube.com/watch?v=0cQxg9uDnzA)
 
@@ -55,9 +55,20 @@ First, you need to install [node](http://nodejs.org/) , you might want to read [
  * npm install
 
 
-## Usage
- * If you specify a master the bot will only obey to him
- * `rbot <host> <port> <name> <password> [<master>]`
+### Usage :
+ `rbot [options...] <host> [-p <port>] <name> [<password>] [-m <master>]`
+
+### Options:
+```
+  --version      Show version number                                   [boolean]
+  -h, --help     Show help                                             [boolean]
+  -c, --console  control yourself with console                         [boolean]
+  -d, --dumb     don't read command from chat                          [boolean]
+  -n, --noisy    be noisy to your friends                              [boolean]
+  -v, --verbose  output verbose in console                             [boolean]
+  -p, --port     specify <port> to server              [number] [default: 25565]
+  -m, --master   follow <master> only, overrides -c option              [string]
+```
  
  If you cloned the repo, run `node rbot.js` instead.
 
