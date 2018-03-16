@@ -1,5 +1,5 @@
 %{
-	var io;
+	var io=console.log;
 	function setio(_io) {io=_io;}
 	module.exports.setio = setio;
 %}
