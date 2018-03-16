@@ -19,7 +19,7 @@
         "name": "Romain Beaumont"
     },
     "scripts": {
-        "test": "./grammar/checkeverything",
+        "test": "./grammar/checkEverything.sh",
         "prepublish": "cd grammar && jison grammar.jison"
     },
     "license": "MIT",
