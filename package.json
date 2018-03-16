@@ -1,37 +1,38 @@
 {
-  "name": "rbot",
-  "version": "0.2.4",
-  "description": "bot made with mineflayer which can do task",
-  "main": "rbot.js",
-  "bin": {
-    "rbot": "./rbot.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/rom1504/rbot.git"
-  },
-  "keywords": [
-    "mineflayer",
-    "minecraft",
-    "bot"
-  ],
-  "author": {
-    "name": "Romain Beaumont"
-  },
-  "scripts": {
-    "prepublish": "cd grammar && jison grammar.jison"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "a-star": "~0.1.0",
-    "async": "^1.5.2",
-    "cloneextend": "~0.0.3",
-    "mineflayer": "^2.0.0",
-    "mineflayer-blockfinder": "0.0.7",
-    "mineflayer-navigate": "0.0.10",
-    "vec3": "^0.1.3"
-  },
-  "devDependencies": {
-    "jison": "~0.4.2"
-  }
+    "name": "rbot",
+    "version": "0.2.4",
+    "description": "bot made with mineflayer which can do task",
+    "main": "rbot.js",
+    "bin": {
+        "rbot": "./rbot.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/rom1504/rbot.git"
+    },
+    "keywords": [
+        "mineflayer",
+        "minecraft",
+        "bot"
+    ],
+    "author": {
+        "name": "Romain Beaumont"
+    },
+    "scripts": {
+        "prepublish": "cd grammar && jison grammar.jison"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "a-star": "~0.1.0",
+        "async": "^1.5.2",
+        "cloneextend": "~0.0.3",
+        "mineflayer": "^2.0.0",
+        "mineflayer-blockfinder": "0.0.7",
+        "mineflayer-navigate": "0.0.10",
+        "vec3": "^0.1.3",
+        "yargs": "11.1.0"
+    },
+    "devDependencies": {
+        "jison": "~0.4.2"
+    }
 }

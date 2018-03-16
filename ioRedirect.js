@@ -1,5 +1,5 @@
 var bot, processMessage;
-var chatin, chatout, stdin, taskspec;
+var chatin, chatout, stdin, log;
 
 function init(_bot, _processMessage, consolecommand, chatcommand, noisy, verbose, remember = 0 /*useless for now*/ ) {
     bot = _bot;
@@ -10,28 +10,28 @@ function init(_bot, _processMessage, consolecommand, chatcommand, noisy, verbose
     else chatin = print;
     if (noisy) chatout = chat;
     else chatout = print;
-    if (verbose) taskspec = print;
-    else taskspec = function(param1, param2 = bot.username) {};
+    if (verbose) log = print;
+    else log = function(param1, param2 = bot.username) {};
+    return {
+        chatin: chatin,
+        chatout: chatout,
+        stdin: stdin,
+        log: log,
+    };
 }
 
-function command(message, username = bot.username) {
+function command(message, username = undefined) {
     processMessage(message, username, function(err) {
         if (!err) chatout("I " + (!err ? "achieved" : "failed") + " task " + message);
     });
 }
 
-function print(sentence, username = bot.username) {
+function print(sentence, username = undefined) {
     console.log(sentence);
 }
 
-function chat(payload, username = bot.username) {
+function chat(payload, username = undefined) {
     bot.chat(payload);
 }
 
-module.exports = {
-    init: init,
-    chatin: chatin,
-    chatout: chatout,
-    stdin: stdin,
-    taskspec: taskspec,
-}
+module.exports.init = init;

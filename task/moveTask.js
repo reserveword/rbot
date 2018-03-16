@@ -77,7 +77,7 @@ function moveTo(goalPosition, done) {
         if (goalPosition.distanceTo(bot.entity.position) >= 0.2) {
             //bot.navigate.to(goalPosition);//use callback here ?
             var a = bot.navigate.findPathSync(goalPosition, { timeout: 5000 });
-            io.verbose(a.status + " " + a.path.length);
+            io.log(a.status + " " + a.path.length);
             if (a.path.length <= 1) done();
             else if (a.status === 'success') bot.navigate.walk(a.path, function() { done() });
             else if (a.status === 'noPath') done(true);

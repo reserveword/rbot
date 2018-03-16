@@ -243,7 +243,7 @@ function init(_bot, _vec3, _achieve, _achieveList, _processMessage, _mf, _async,
                 var s = positionToString(p);
                 var r = bot.navigate2.findPathSync(p);
                 var path = r.path; // cannot fail : should be able to fail... : maybe with a break, failed or stop task ?
-                io.verbose(r);
+                io.log(r);
                 var t = path.map(function(p2) { return "sumove " + positionToString(p2); }).join(" then ");
                 done("do " + t + " done");
             });
@@ -346,11 +346,11 @@ function neededItemsToCraft(n, s) {
     if (r.length === 0) return null;
     var nd = [],
         d = r[0].delta;
-    io.verbose(d);
+    io.log(d);
     for (i in d) {
         if (d[i].id != id) {
-            //io.verbose("d id"+d[i].id);
-            //io.verbose(mf.items[d[i].id].name);
+            //io.log("d id"+d[i].id);
+            //io.log(mf.items[d[i].id].name);
             nd.push({
                 "name": mf.items[d[i].id] === undefined ?
                     mf.blocks[d[i].id].name : mf.items[d[i].id].name,

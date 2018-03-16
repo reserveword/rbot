@@ -1,5 +1,6 @@
 var ce = require('cloneextend');
-var parser = require("./grammar/grammar").parser;
+var grammar = require("./grammar/grammar");
+var parser = grammar.parser;
 
 var bot, vec3, generated_tasks, tasks, parameterized_alias, alias, master, stringTo, giveUser, io;
 
@@ -14,7 +15,7 @@ function init(_tasks, _giveUser, _parameterized_alias, _alias, _stringTo, _bot, 
     stringTo = _stringTo;
     giveUser = _giveUser;
     io = _io;
-    parser.io = io;
+    grammar.setio(io);
 }
 
 function parsedTaskToString(parsedTask) {
@@ -32,14 +33,14 @@ function parsedTaskToString(parsedTask) {
 
 function reportEndOfTask(parsedTask, done) {
     return function() {
-        io.verbose("I achieved task " + parsedTaskToString(parsedTask));
+        io.log("I achieved task " + parsedTaskToString(parsedTask));
         done();
     };
 }
 
 function reportFailOfTask(parsedTask, done) {
     return function() {
-        io.verbose("I failed task " + parsedTaskToString(parsedTask));
+        io.log("I failed task " + parsedTaskToString(parsedTask));
     };
 }
 
@@ -74,11 +75,11 @@ function achieve(parsedTask, username, done) {
     try {
         nameToTask(parsedTask, username, function(task, parsedTask) {
             if (task === null) {
-                io.verbose("Cannot find " + parsedTaskToString(parsedTask));
+                io.log("Cannot find " + parsedTaskToString(parsedTask));
                 done(true); // think how to use this...
                 return;
             }
-            io.verbose("I'm going to achieve task " + parsedTaskToString(parsedTask));
+            io.log("I'm going to achieve task " + parsedTaskToString(parsedTask));
             setImmediate(function() {
                 applyAction(task, username, parsedTask, done)
             });
@@ -135,7 +136,7 @@ function replaceParameterizedAlias(parsedMessage, username, done) {
             replaceParameterizedAlias(parse(replaced), username, done);
         });
         parameterized_alias[parsedMessage[0]].apply(this, pars);
-        // 			io.verbose(pars);
+        // 			io.log(pars);
     } else done(parsedMessage);
 }
 
@@ -145,7 +146,7 @@ function parse(message) {
 
 function processMessage(message, username, done) {
     if (username != bot.username && (username === master || master === undefined)) {
-        io.verbose(message);
+        io.log(message);
         var parsedMessage;
         try {
             parsedMessage = parse(message);

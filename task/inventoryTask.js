@@ -26,7 +26,7 @@ function toss(number, itemName, done) {
     var item = findItemType(itemName);
     if (item) bot.toss(item.id, null, number, function() { done() });
     else {
-        io.verbose("I have no " + itemName); // change this maybe
+        io.log("I have no " + itemName); // change this maybe
         done();
     }
 }
@@ -36,16 +36,16 @@ function equip(destination, item, done) {
     if (item != null && item != true) {
         bot.equip(item, destination, function(err) {
             if (err) {
-                io.verbose("unable to equip " + item.name);
+                io.log("unable to equip " + item.name);
                 //console.log(err.stack);
                 setTimeout(function() { done(false); }, 200);
             } else {
-                io.verbose("equipped " + item.name);
+                io.log("equipped " + item.name);
                 setTimeout(done, 200);
             }
         });
     } else if (item == null) {
-        io.verbose("I have no such item"); // change this maybe : yes : it should be fixed by : either it's a block you can break by hand, either go get a block... (and if it's to build : careful you might die... : figure a way out)
+        io.log("I have no such item"); // change this maybe : yes : it should be fixed by : either it's a block you can break by hand, either go get a block... (and if it's to build : careful you might die... : figure a way out)
         done();
     } else if (item == true) // already equipped
     {

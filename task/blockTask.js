@@ -34,7 +34,7 @@ function dig(pos, done) {
         done();
         return;
     }
-    io.verbose("I dig position " + pos);
+    io.log("I dig position " + pos);
     bot.dig(bot.blockAt(pos), function() { done() });
 }
 
@@ -74,7 +74,7 @@ function watch(ent, done) {
                 if (action != "") {
                     var d = newBlock.position.floored().minus(firstPosition);
                     var c = action + " r" + positionToString(d)
-                    io.verbose(c);
+                    io.log(c);
                     com += (com != "" ? " then " : "") + c;
                 }
             }
@@ -87,7 +87,7 @@ function stopWatch(done) {
     bot.removeListener('blockUpdate', wa[1]);
     wa[0]();
     com = "do " + com + " done";
-    io.verbose(com);
+    io.log(com);
     done();
 }
 // rather a parameterized alias ?

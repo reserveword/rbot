@@ -1,3 +1,8 @@
+%{
+	var io;
+	function setio(_io) {io=_io;}
+	module.exports.setio = setio;
+%}
 %lex
 
 %%
@@ -102,7 +107,7 @@ expressions : exp EOF
 		if(t.constructor == Array) return arrayToString(t);
 		if(t.constructor == String) return '"'+t+'"';
 	}
-	parser.io.verbose(taskToString($1[1])); return $1[1];	
+	io.log(taskToString($1[1])); return $1[1];	
 }
 ;
 
